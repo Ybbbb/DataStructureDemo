@@ -6,7 +6,6 @@
                 throw new Error('Failed to init, max length canbe a number!');
             }
             this.maxLength = maxLength;
-
         }
     }
 }
