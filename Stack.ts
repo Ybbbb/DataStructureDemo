@@ -39,7 +39,7 @@
     stack.push(2);
     stack.push(4);
     stack.push(5);
-    stack.pop();
+    console.log('移出栈顶元素 :', stack.pop());
     console.log('栈内元素数量：', stack.getLength());
     stack.print();
 

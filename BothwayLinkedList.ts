@@ -54,6 +54,7 @@
             let currentNode = this.head;
             while (currentNode.next !== this.head) {
                 currentNode = currentNode.next;
+                console.log(currentNode);
                 if (currentNode.data === value) {
                     let priorNode = currentNode.prior;
                     priorNode.next = currentNode.next;
@@ -80,7 +81,8 @@
     list.append(1);
     list.append(3);
     list.append(2);
-    list.insertAfterNode(3, 4);
+    // list.insertAfterNode(3, 4);
+    list.removeByData(2);
     list.print();
     console.log('元素位置 :', list.indexOf(2));
 }
