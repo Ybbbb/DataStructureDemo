@@ -1,3 +1,3 @@
-项目依赖于 TypeScript,
-如果已经安装了npm的话
-使用npm install -g typescript
+项目用到了 TypeScript,
+需要安装ts
+npm install -g typescript
