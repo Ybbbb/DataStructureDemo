@@ -1,36 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
-</body>
-
-</html>
-<script>
-    'use strict'
-    window.onload = function () {
-        const list = new BothwayLinkedList();
-        list.append(1);
-        list.append(3);
-        list.append(2);
-        list.insertAfterNode(3, 4);
-        list.print();
-        console.log('元素位置 :', list.indexOf(2));
-    }
+{
     class Node {
-        constructor(value) {
+        data: any;
+        prior!: Node;
+        next!: Node;
+        constructor(value: any) {
             this.data = value;
-            this.prior = null;
-            this.next = null;
         }
     }
     class BothwayLinkedList {
+        head: Node;
         constructor() {
             let node = new Node('head');
             node.prior = node;
@@ -38,7 +17,7 @@
             this.head = node;
         }
         // 尾部插入
-        append(value) {
+        append(value: any) {
             let currentNode = this.head;
             const newNode = new Node(value);
             while (currentNode.next !== this.head) {
@@ -56,7 +35,7 @@
             }
         }
         // 指定节点后插入
-        insertAfterNode(value, newValue) {
+        insertAfterNode(value: any, newValue: any) {
             let currentNode = this.head;
             const newNode = new Node(newValue);
             while (currentNode.next !== this.head) {
@@ -71,7 +50,7 @@
             throw new Error('The specified node does not exist!');
         }
         // 删除指定节点
-        removeByData(value) {
+        removeByData(value: any) {
             let currentNode = this.head;
             while (currentNode.next !== this.head) {
                 currentNode = currentNode.next;
@@ -84,7 +63,7 @@
             throw new Error('The specified node does not exist!');
         }
         // 获取元素位置
-        indexOf(value) {
+        indexOf(value: any) {
             let index = 0;
             let currentNode = this.head;
             while (currentNode.next !== this.head) {
@@ -97,4 +76,11 @@
             return -1;
         }
     }
-</script>
+    const list = new BothwayLinkedList();
+    list.append(1);
+    list.append(3);
+    list.append(2);
+    list.insertAfterNode(3, 4);
+    list.print();
+    console.log('元素位置 :', list.indexOf(2));
+}

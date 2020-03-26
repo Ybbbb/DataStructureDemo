@@ -1,53 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <div>
-        <ul>
-            <li></li>
-        </ul>
-    </div>
-</body>
-
-</html>
-<script>
-    'use strict'
-    window.onload = function () {
-        const a = new SequenceList(5);
-        a.push(1);
-        a.push(2);
-        a.push(3);
-        a.push(4);
-        a.push(5);
-        console.log('指定元素位置 :', a.getElementIndex(3));
-        a.removeForElement(2);
-        console.log('当前长度 :', a.length);
-        a.insertForIndex(4, 6)
-        a.print();
-        console.log('当前长度 :', a.length);
-    }
+{
     class SequenceList {
-        constructor(maxLength) {
-            if (typeof (maxLength) !== 'number') {
-                throw new Error('Failed to init, max length canbe a number!');
-            }
+        length: number;
+        maxLength: number;
+        data: any[];
+        constructor(maxLength: number) {
             this.data = [];
             this.maxLength = maxLength;
             this.length = 0;
         }
         // 尾部插入
-        push(element) {
+        push(element: any) {
             this.data[this.length] = element;
             this.length++;
         }
         // 在指定位置插入
-        insertForIndex(index, element) {
+        insertForIndex(index: number, element: any) {
             // 判断是否超过最大数量
             if (this.length >= this.maxLength) {
                 throw new Error('Insert the failure, cannot exceed the max length!');
@@ -65,7 +33,7 @@
             this.length++;
         }
         // 删除指定元素
-        removeForElement(element) {
+        removeForElement(element: any) {
             const index = this.getElementIndex(element);
             if (index < 0) {
                 console.error('The element was not found');
@@ -78,7 +46,7 @@
             this.length--;
         }
         // 获取元素所在位置
-        getElementIndex(element) {
+        getElementIndex(element: any) {
             let index = -1;
             for (let i = 0; i < this.length; i++) {
                 if (element === this.data[i]) {
@@ -94,5 +62,16 @@
             }
         }
     }
-
-</script>
+    const a = new SequenceList(5);
+    a.push(1);
+    a.push(2);
+    a.push(3);
+    a.push(4);
+    a.push(5);
+    console.log('指定元素位置 :', a.getElementIndex(3));
+    a.removeForElement(2);
+    console.log('当前长度 :', a.length);
+    a.insertForIndex(4, 6)
+    a.print();
+    console.log('当前长度 :', a.length);
+}

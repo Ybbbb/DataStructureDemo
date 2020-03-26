@@ -1,37 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-</body>
-
-</html>
-<script>
-    'use strict'
-    window.onload = function () {
-        const node = new LinkedList();
-        node.append(4);
-        node.append(3);
-        node.append(6);
-        node.append(7);
-        node.append(9);
-        node.append(2);
-        node.print();
-    }
+{
     // 节点类
     class Node {
-        constructor(value) {
+        data: any;
+        next: Node | null;
+        constructor(value: any) {
             this.data = value;
-            this.next = null;
+            this.next = null
         }
     }
     // 链表类
     class LinkedList {
+        head: Node;
         constructor() {
             // 链表头结点
             this.head = new Node('head');
@@ -46,7 +25,7 @@
             return length;
         }
         // 尾部插入
-        append(newValue) {
+        append(newValue: any) {
             const newNode = new Node(newValue);
             let currentNode = this.head;
             while (currentNode.next) {
@@ -59,7 +38,7 @@
         * @param value 指定节点的值
         * @param newValue 要插入的值
         */
-        insertAfterNode(value, newValue) {
+        insertAfterNode(value: any, newValue: any) {
             const newNode = new Node(newValue);
             let currentNode = this.getNodeForData(value);
             if (!currentNode) {
@@ -69,7 +48,7 @@
             currentNode.next = newNode;
         }
         // 通过节点值查找节点
-        getNodeForData(value) {
+        getNodeForData(value: any) {
             let currentNode = this.head;
             if (!currentNode.next) {
                 throw new Error('The current list is empty!');
@@ -84,7 +63,7 @@
             return null;
         }
         // 获取元素位置
-        getNodeIndex(value) {
+        getNodeIndex(value: any) {
             let currentNode = this.head;
             if (!currentNode.next) {
                 throw new Error('The current list is empty!');
@@ -100,21 +79,23 @@
             return -1;
         }
         // 通过节点值删除节点
-        removeNodeForData(value) {
-            const prevNode = this.getPrevNode(value);
+        removeNodeForData(value: any) {
             let currentNode = this.getNodeForData(value);
             if (!currentNode) {
                 throw new Error('The node to be deleted does not exist!');
             }
-            prevNode.next = currentNode.next;
+            const prevNode = this.getPrevNode(value);
+            if (prevNode) {
+                prevNode.next = currentNode.next;
+            }
         }
         // 通过节点值，获取上一个节点
-        getPrevNode(value) {
+        getPrevNode(value: any) {
             let currentNode = this.head;
             if (!currentNode.next) {
                 throw new Error('The current list is empty!');
             }
-            if (currentNode.value === value) {
+            if (currentNode.data === value) {
                 throw new Error('The current node is the head node!');
             }
             while (currentNode.next.data !== value) {
@@ -140,8 +121,8 @@
                 throw new Error('The current list is empty!');
             }
             let isFirst = true;
-            let lastNode = {};
-            let newNode = {};
+            let lastNode: Node | null = null;
+            let newNode: Node | null = null;
             while (currentNode.next) {
                 currentNode = currentNode.next;
                 newNode = Object.assign({}, currentNode);
@@ -166,4 +147,13 @@
             }
         }
     }
-</script>
+    const node = new LinkedList();
+    node.append(4);
+    node.append(3);
+    node.append(6);
+    node.append(7);
+    node.append(9);
+    node.append(2);
+    node.reverse();
+    node.print();
+}
