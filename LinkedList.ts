@@ -85,7 +85,10 @@
                 throw new Error('The node to be deleted does not exist!');
             }
             const prevNode = this.getPrevNode(value);
-            if (prevNode) {
+            // 如果要删除的节点刚好为最后一个节点
+            if (!currentNode.next) {
+                prevNode.next = null;
+            } else {
                 prevNode.next = currentNode.next;
             }
         }
@@ -101,8 +104,7 @@
             while (currentNode.next.data !== value) {
                 currentNode = currentNode.next;
                 if (!currentNode || !currentNode.next) {
-                    console.error('The node was not found!');
-                    return null;
+                    throw new Error('The node was not found!');
                 }
             }
             return currentNode;
