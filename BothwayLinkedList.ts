@@ -1,5 +1,6 @@
 
 {
+    // 节点类
     class Node {
         data: any;
         prior!: Node;
@@ -8,7 +9,9 @@
             this.data = value;
         }
     }
+    // 双向链表
     class BothwayLinkedList {
+        // 头结点
         head: Node;
         constructor() {
             let node = new Node('head');

@@ -112,8 +112,8 @@
         print() {
             let currentNode = this.head;
             while (currentNode.next) {
-                console.log(currentNode.next.data);
                 currentNode = currentNode.next;
+                console.log(currentNode.data);
             }
         }
         // 颠倒
@@ -150,12 +150,12 @@
         }
     }
     const node = new LinkedList();
-    node.append(4);
-    node.append(3);
-    node.append(6);
-    node.append(7);
-    node.append(9);
+    node.append(1);
     node.append(2);
+    node.append(3);
+    node.append(4);
+    node.append(5);
+    node.append(6);
     node.reverse();
     node.print();
 }

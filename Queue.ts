@@ -33,6 +33,7 @@
             }
         }
     }
+    // 双向队列
     class Dique {
         data: any[];
         size: number;
