@@ -15,7 +15,7 @@
             this.top++;
             this.data[this.top] = value;
         }
-        pop() {
+        out() {
             if (this.top === -1) {
                 throw new Error('Empty stack!');
             }
@@ -39,7 +39,7 @@
     stack.push(2);
     stack.push(4);
     stack.push(5);
-    console.log('移出栈顶元素 :', stack.pop());
+    console.log('移出栈顶元素 :', stack.out());
     console.log('栈内元素数量：', stack.getLength());
     stack.print();
 

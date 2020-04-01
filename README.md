@@ -1,3 +1,3 @@
-项目用到了 TypeScript,
-需要安装ts
+用到了 TypeScript,
+需要安装
 执行npm install -g typescript
