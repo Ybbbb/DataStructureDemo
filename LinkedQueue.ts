@@ -20,7 +20,7 @@
             this.rear = null;
             this.length = 0;
         }
-        push(value: any) {
+        enQueue(value: any) {
             const node = new Node(value);
             if (this.length === 0) {
                 this.front = node;
@@ -32,7 +32,7 @@
             }
             this.length++;
         }
-        out() {
+        deQueue() {
             if (this.length === 0) {
                 throw new Error('The queue is empty!');
             }
@@ -51,10 +51,4 @@
             }
         }
     }
-    const queue = new LinkedQueue();
-    queue.push(1);
-    queue.push(2);
-    queue.push(3);
-    queue.out();
-    queue.print();
 }

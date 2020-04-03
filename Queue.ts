@@ -1,4 +1,7 @@
 {
+    /**
+     * 普通队列
+     */
     class Queue {
         data: any[];
         size: number;
@@ -6,14 +9,14 @@
             this.data = [];
             this.size = maxlength;
         }
-        push(value: any) {
+        enQueue(value: any) {
             if (this.getLength() < this.size) {
                 this.data.push(value);
                 return;
             }
             console.error('The queue is full！');
         }
-        out(): any {
+        deQueue(): any {
             if (!this.isEmpty()) {
                 return this.data.shift();
             }
@@ -33,7 +36,9 @@
             }
         }
     }
-    // 双向队列
+    /**
+     * 双向对列
+     */
     class Dique {
         data: any[];
         size: number;
@@ -45,7 +50,7 @@
          * 头部入队
          * @param value 要插入的值
          */
-        headPush(value: any) {
+        frontEnQueue(value: any) {
             if (this.getLength() < this.size) {
                 this.data.unshift(value);
                 return;
@@ -56,7 +61,7 @@
          * 尾部入队
          * @param value 要插入的值
          */
-        tailPush(value: any) {
+        rearEnQueue(value: any) {
             if (this.getLength() < this.size) {
                 this.data.push(value);
                 return;
@@ -66,7 +71,7 @@
         /**
          * 头部出队
          */
-        headOut(): any {
+        frontDeQueue(): any {
             if (!this.isEmpty()) {
                 return this.data.shift();
             }
@@ -74,7 +79,7 @@
         /**
          * 尾部出队
          */
-        tailOut(): any {
+        rearDeQueue(): any {
             if (!this.isEmpty()) {
                 return this.data.pop();
             }
@@ -94,13 +99,37 @@
             }
         }
     }
-    const dique = new Dique(5);
-    dique.tailPush(1);
-    dique.headPush(2);
-    dique.tailPush(3);
-    dique.headPush(4);
-    dique.print();
-    console.log('--------------');
-    console.log(dique.headOut());
-    console.log(dique.tailOut());
+    /**
+     * 循环队列
+     */
+    class CycleQueue {
+        /**队列头 */
+        front: number = 0;
+        /**队列尾 */
+        rear: number = 0;
+        /**队列大小 */
+        length: number;
+        /**当前入队数量 */
+        count: number = 0;
+        data: any[] = [];
+        constructor(maxLength: number) {
+            this.length = maxLength;
+        }
+        enQueue(value: any) {
+            if (this.count === this.length) {
+                throw new Error('The queue is full!');
+            }
+            this.data[this.rear] = value;
+            this.rear = (this.rear + 1) % this.length;
+            this.count++;
+        }
+        deQueue() {
+            if (this.count === 0) {
+                throw new Error('The queue is empty!');
+            }
+            this.front = (this.front + 1) % this.length;
+            this.count--;
+        }
+    }
+
 }
