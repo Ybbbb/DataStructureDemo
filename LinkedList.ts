@@ -141,6 +141,21 @@
             // 头结点的next指向原链表最后一个终结点
             this.head.next = lastNode;
         }
+        // 颠倒
+        reverse1() {
+            let currentNode = this.head;
+            if (!currentNode.next) {
+                throw new Error('The current list is empty!');
+            }
+            let p: Node | null = currentNode.next;
+            currentNode.next = null;
+            while (p) {
+                const q = p;
+                p = p.next;
+                q.next = currentNode.next;
+                currentNode.next = q;
+            }
+        }
         // 正序排列
         sortByAsc() {
             let currentNode = this.head;
@@ -156,6 +171,6 @@
     node.append(4);
     node.append(5);
     node.append(6);
-    node.reverse();
+    node.reverse1();
     node.print();
 }
