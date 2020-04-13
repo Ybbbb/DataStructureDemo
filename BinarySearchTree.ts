@@ -1,3 +1,4 @@
+
 {
     // 节点类
     class Node {
@@ -35,28 +36,44 @@
                 }
             }
         }
-        // 先序遍历
-        preOrder(node: Node | null = this.root) {
+        // 递归先序遍历
+        preOrderRecursion(node: Node | null = this.root) {
             if (node != null) {
                 console.log(node.data);
-                this.preOrder(node.left);
-                this.preOrder(node.right);
+                this.preOrderRecursion(node.left);
+                this.preOrderRecursion(node.right);
             }
         }
-        // 中序遍历
-        inOrder(node: Node | null = this.root) {
+        // 递归中序遍历
+        inOrderRecursion(node: Node | null = this.root) {
             if (node != null) {
-                this.inOrder(node.left);
+                this.inOrderRecursion(node.left);
                 console.log(node.data);
-                this.inOrder(node.right);
+                this.inOrderRecursion(node.right);
             }
         }
-        // 后序遍历
-        postOrder(node: Node | null = this.root) {
+        // 递归后序遍历
+        postOrderRecursion(node: Node | null = this.root) {
             if (node != null) {
-                this.postOrder(node.left);
-                this.postOrder(node.right);
+                this.postOrderRecursion(node.left);
+                this.postOrderRecursion(node.right);
                 console.log(node.data);
+            }
+        }
+        // 利用队列中序遍历
+        inOrderStack() {
+            let node = this.root;
+            let stack = [];
+            while (node || stack.length > 0) {
+                while (node) {
+                    stack.push(node);
+                    node = node.left;
+                }
+                if (stack.length > 0) {
+                    node = stack.pop()!;
+                    console.log(node.data);
+                    node = node.right;
+                }
             }
         }
 
@@ -76,10 +93,12 @@
     test.insert(13);
     test.insert(17);
     test.insert(19);
-    console.log('先序遍历----------');
-    test.preOrder();
-    console.log('中序遍历----------');
-    test.inOrder();
-    console.log('后序遍历----------');
-    test.postOrder();
+    console.log('递归先序遍历----------');
+    test.preOrderRecursion();
+    console.log('递归中序遍历----------');
+    test.inOrderRecursion();
+    console.log('递归后序遍历----------');
+    test.postOrderRecursion();
+    console.log('利用栈中序遍历---------');
+    test.inOrderStack();
 }
