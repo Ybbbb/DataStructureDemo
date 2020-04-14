@@ -9,6 +9,7 @@
             this.data = [];
             this.size = maxlength;
         }
+        /**入队 */
         enQueue(value: any) {
             if (this.getLength() < this.size) {
                 this.data.push(value);
@@ -16,17 +17,20 @@
             }
             console.error('The queue is full！');
         }
+        /**出队 */
         deQueue(): any {
             if (!this.isEmpty()) {
                 return this.data.shift();
             }
         }
+        /**队列长度 */
         getLength(): number {
             return this.data.length;
         }
         isEmpty() {
             return this.data.length === 0;
         }
+        /**清空队列 */
         clear() {
             this.data.length = 0;
         }
@@ -115,6 +119,7 @@
         constructor(maxLength: number) {
             this.length = maxLength;
         }
+        // 入队
         enQueue(value: any) {
             if (this.count === this.length) {
                 throw new Error('The queue is full!');
@@ -123,6 +128,7 @@
             this.rear = (this.rear + 1) % this.length;
             this.count++;
         }
+        // 出队
         deQueue() {
             if (this.count === 0) {
                 throw new Error('The queue is empty!');
