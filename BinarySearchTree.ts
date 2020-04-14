@@ -60,7 +60,7 @@
                 console.log(node.data);
             }
         }
-        // 利用栈中序遍历
+        // 利用栈中序遍历，其实中序遍历后即是排序过的
         inOrderStack() {
             let node = this.root;
             let stack: Array<Node> = [];
@@ -136,6 +136,57 @@
                 console.log('树为空！');
             }
         }
+        /**
+         * 查询节点
+         * @param value 要查找的值
+         */
+        findNode(value: any) {
+            let node = this.root;
+            if (!node) {
+                console.log('空二叉树！');
+                return;
+            }
+            while (node) {
+                if (value < node.data) {
+                    node = node.left;
+                } else if (value > node.data) {
+                    node = node.right;
+                } else {
+                    return node;
+                }
+            }
+            return null;
+        }
+        // 获取二叉树节点最大值
+        findMax() {
+            let node = this.root;
+            if (!node) {
+                console.log('空二叉树！');
+                return;
+            }
+            while (node) {
+                if (!node.right) {
+                    return node.data;
+                } else {
+                    node = node.right;
+                }
+            }
+        }
+        // 获取二叉树节点最小值
+        findMin() {
+            let node = this.root;
+            if (!node) {
+                console.log('空二叉树！');
+                return;
+            }
+            while (node) {
+                if (!node.left) {
+                    return node.data;
+                } else {
+                    node = node.left;
+                }
+            }
+        }
 
     }
 
@@ -153,6 +204,10 @@
     test.insert(13);
     test.insert(17);
     test.insert(19);
+    console.log(test.findMax());
+    console.log(test.findMin());
+    // console.log(test.findNode(11));
+    // console.log(test.findNode(20));
     // console.log('递归先序遍历----------');
     // test.preOrderRecursion();
     // console.log('递归中序遍历----------');
@@ -165,7 +220,7 @@
     // test.inOrderStack();
     // console.log('利用栈后序遍历---------');
     // test.postOrderStack();
-    console.log('层序遍历---------');
-    test.levelOrder();
+    // console.log('层序遍历---------');
+    // test.levelOrder();
 
 }
