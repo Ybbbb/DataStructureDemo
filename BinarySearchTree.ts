@@ -60,10 +60,10 @@
                 console.log(node.data);
             }
         }
-        // 利用队列中序遍历
+        // 利用栈中序遍历
         inOrderStack() {
             let node = this.root;
-            let stack = [];
+            let stack: Array<Node> = [];
             while (node || stack.length > 0) {
                 while (node) {
                     stack.push(node);
@@ -74,6 +74,66 @@
                     console.log(node.data);
                     node = node.right;
                 }
+            }
+        }
+        // 利用栈先序遍历
+        preOrderStack() {
+            let node = this.root;
+            let stack: Array<Node> = [];
+            while (node || stack.length > 0) {
+                while (node) {
+                    stack.push(node);
+                    console.log(node.data);
+                    node = node.left;
+                }
+                if (stack.length > 0) {
+                    node = stack.pop()!;
+                    node = node.right;
+                }
+            }
+        }
+        // 利用栈后序遍历
+        postOrderStack() {
+            let node = this.root;
+            let stackA: Array<Node> = [];
+            let stackB: Array<Node> = [];
+            if (node) {
+                stackA.push(node);
+                while (stackA.length > 0) {
+                    node = stackA.pop()!;
+                    stackB.push(node);
+                    if (node.left) {
+                        stackA.push(node.left);
+                    }
+                    if (node.right) {
+                        stackA.push(node.right);
+                    }
+                }
+                while (stackB.length > 0) {
+                    console.log(stackB.pop()?.data);
+                }
+            } else {
+                console.log('树为空！');
+            }
+        }
+        // 层序遍历
+        levelOrder() {
+            let node = this.root;
+            let queue: Array<Node> = [];
+            if (node) {
+                queue.push(node);
+                while (queue.length > 0) {
+                    node = queue.shift()!;
+                    console.log(node.data);
+                    if (node.left) {
+                        queue.push(node.left);
+                    }
+                    if (node.right) {
+                        queue.push(node.right);
+                    }
+                }
+            } else {
+                console.log('树为空！');
             }
         }
 
@@ -93,12 +153,19 @@
     test.insert(13);
     test.insert(17);
     test.insert(19);
-    console.log('递归先序遍历----------');
-    test.preOrderRecursion();
-    console.log('递归中序遍历----------');
-    test.inOrderRecursion();
-    console.log('递归后序遍历----------');
-    test.postOrderRecursion();
-    console.log('利用栈中序遍历---------');
-    test.inOrderStack();
+    // console.log('递归先序遍历----------');
+    // test.preOrderRecursion();
+    // console.log('递归中序遍历----------');
+    // test.inOrderRecursion();
+    // console.log('递归后序遍历----------');
+    // test.postOrderRecursion();
+    // console.log('利用栈先序遍历---------');
+    // test.preOrderStack();
+    // console.log('利用栈中序遍历---------');
+    // test.inOrderStack();
+    // console.log('利用栈后序遍历---------');
+    // test.postOrderStack();
+    console.log('层序遍历---------');
+    test.levelOrder();
+
 }
