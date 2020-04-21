@@ -12,7 +12,7 @@
     // 二叉查找、排序树
     class BinaryTree {
         root: Node | null = null;
-        // 插入
+        // 插入，关键点在于找到要插入的节点位置
         insert(value: any, node: Node | null = this.root) {
             if (!node) {
                 this.root = new Node(value);
@@ -186,6 +186,10 @@
                     node = node.left;
                 }
             }
+        }
+        // 删除节点
+        delete() {
+
         }
 
     }
