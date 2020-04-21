@@ -64,7 +64,7 @@
             }
         }
     }
-    const heap = new MninHeap(7);
+    const heap = new MinHeap(7);
     heap.insert(5);
     heap.insert(6);
     heap.insert(7);
