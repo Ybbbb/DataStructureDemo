@@ -2,7 +2,7 @@
     /**
      * 最小堆
      */
-    class MninHeap {
+    class MinHeap {
         // 最大长度
         private maxSize: number;
         size: number = 0;
