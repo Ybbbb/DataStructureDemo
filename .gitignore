@@ -6,3 +6,4 @@ js/Queue.js
 js/SequenceList.js
 js/LinkedQueue.js
 js/BinarySearchTree.js
+js/Heap.js
